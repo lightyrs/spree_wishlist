@@ -1,23 +1,17 @@
 <div id="wishlist_header" class="row">
   <h1><%= @wishlist.name %></h1>
-  <% if @wishlist.user == current_user %>
-    <div id="manage_wishlist_links">
-      <%= link_to t(:edit_wishlist), edit_wishlist_path(@wishlist), :class => 'button' %>
-    </div>
-    <div><%= render :partial => 'accessibility' %></div>
-  <% end -%>
 </div>
 <table id="wishlist">
   <thead>
     <tr>
-      <% if @wishlist.user == current_user %>
-        <th><%= t(:wishlist_actions) %></th>
-      <% end -%>
       <th><%= t(:item_view) %></th>
       <th><%= t(:item_description) %></th>
       <th><%= t(:availability) %></th>
       <th><%= t(:date_added) %></th>
       <th><%= t(:price) %></th>
+      <% if @wishlist.user == current_user %>
+        <th><%= t(:wishlist_actions) %></th>
+      <% end -%>
     </tr>
   </thead>
   <tbody id="line_items">
@@ -72,12 +66,3 @@
   <% end -%>
   </tbody>
 </table>
-<div class="footer_links" data-hook="wishlist_footer_links">
-<% if @wishlist.user == current_user %>
-  <%= link_to t(:create_new_wishlist), new_wishlist_path, :class => "button" %>
-<% end -%>
-<%= link_to t(:continue_shopping), products_path, :class => "button" %>
-<% if respond_to?(:email_to_friend_url) %>
-  <%= link_to t('email_to_friend.send_to_friend'), email_to_friend_url('wishlist', @wishlist), :class => "button" %>
-<% end %>
-</div>
