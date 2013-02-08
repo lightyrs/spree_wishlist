@@ -8,4 +8,8 @@ Spree.user_class.class_eval do
     default_wishlist.update_attribute(:is_default, true) unless default_wishlist.is_default?
     default_wishlist
   end
+
+  def favorites
+    wishlists.favorites
+  end
 end

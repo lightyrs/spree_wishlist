@@ -9,6 +9,12 @@ class Spree::Wishlist < ActiveRecord::Base
 
   validates :name, :presence => true
 
+  scope :favorites, where(:name => 'Favorites')
+
+  def is_favorites?
+    name == 'Favorites'
+  end
+
   def include?(variant_id)
     self.wished_products.active.map(&:variant_id).include? variant_id.to_i
   end
