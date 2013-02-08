@@ -10,6 +10,6 @@ Spree.user_class.class_eval do
   end
 
   def favorites
-    wishlists.favorites
+    wishlists.where(:name => 'Favorites').first
   end
 end

@@ -9,8 +9,6 @@ class Spree::Wishlist < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  scope :favorites, where(:name => 'Favorites').first
-
   def is_favorites?
     name == 'Favorites'
   end
